@@ -52,27 +52,10 @@ const data = {
   ],
   navMain: [
     {
-      title: 'Search',
-      url: '#',
-      icon: Search,
-    },
-    {
-      title: 'Ask AI',
-      url: '#',
-      icon: Sparkles,
-    },
-    {
-      title: 'Home',
+      title: 'Продукты',
       url: '#',
       icon: Home,
-      isActive: true,
-    },
-    {
-      title: 'Inbox',
-      url: '#',
-      icon: Inbox,
-      badge: '10',
-    },
+    }
   ],
   navSecondary: [
     {
@@ -269,11 +252,11 @@ const data = {
       <TeamSwitcher :teams="data.teams" />
       <NavMain :items="data.navMain" />
     </SidebarHeader>
-    <SidebarContent>
-      <NavFavorites :favorites="data.favorites" />
-      <NavWorkspaces :workspaces="data.workspaces" />
-      <NavSecondary :items="data.navSecondary" class="mt-auto" />
-    </SidebarContent>
+<!--    <SidebarContent>-->
+<!--      <NavFavorites :favorites="data.favorites" />-->
+<!--      <NavWorkspaces :workspaces="data.workspaces" />-->
+<!--      <NavSecondary :items="data.navSecondary" class="mt-auto" />-->
+<!--    </SidebarContent>-->
     <SidebarRail />
   </Sidebar>
 </template>

@@ -14,7 +14,21 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card/index.js";
-const items = [
+import {ref} from "vue";
+const length = 50
+
+const truncateText = (item) => {
+  return item.expanded ? item.name : (item.name.slice(0, length) + (item.name.length > length ? '...' : ''))
+}
+const hasMore = (text) => {
+  return text.length > length
+}
+const expand = (item) => {
+  console.log(item)
+  item.expanded = !item.expanded
+  console.log(item)
+}
+const items = ref([
   {
     code:'НС-1189874',
     name:'Փայտե տակդիր',
@@ -120,7 +134,7 @@ const items = [
     left:4.000,
     image:'https://rkcdn.ru/products/4da23cfe-0647-11f0-b8de-00505601218a/src.jpg'
   }
-]
+])
 
 
 </script>
@@ -133,29 +147,30 @@ const items = [
         <div class="flex flex-1 items-center gap-2 px-3">
           <SidebarTrigger />
           <Separator orientation="vertical" class="mr-2 h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbPage class="line-clamp-1">
-                  Project Management & Task Tracking
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+  <!--          <Breadcrumb>-->
+  <!--            <BreadcrumbList>-->
+  <!--              <BreadcrumbItem>-->
+  <!--                <BreadcrumbPage class="line-clamp-1">-->
+  <!--                  Project Management & Task Tracking-->
+  <!--                </BreadcrumbPage>-->
+  <!--              </BreadcrumbItem>-->
+  <!--            </BreadcrumbList>-->
+  <!--          </Breadcrumb>-->
         </div>
         <div class="ml-auto px-3">
           <NavActions />
         </div>
       </header>
       <div class="flex-1 grid grid-cols-12 gap-4 px-4 py-10">
-        <div class="col-span-4 lg:col-span-4 xl:col-span-3" v-for="item in items">
+        <div class="col-span-6 sm:col-span-4 md:col-span-6 lg:col-span-4 xl:col-span-3" v-for="item in items">
           <Card class="h-full">
-            <CardHeader>
-              <p>{{item.code}}</p>
+            <CardHeader class="!p-4 lg:!p-6">
+              <p class="font-semibold">{{item.code}}</p>
               <img :src="item.image" alt="">
             </CardHeader>
-            <CardContent>
-              <CardTitle>{{item.name}}</CardTitle>
+            <CardContent class="!p-4 lg:!p-6">
+              <CardTitle class="text-sm">{{truncateText(item)}} <button v-if="hasMore(item.name)" @click="expand(item)" :class="`underline ${item.expanded ? 'text-blue-400 font-normal' : 'font-semibold text-blue-500'}`">
+                {{ item.expanded ? 'пок.меньше' : 'пок.больше' }}</button></CardTitle>
             </CardContent>
           </Card>
         </div>

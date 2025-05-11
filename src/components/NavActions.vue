@@ -102,12 +102,12 @@ const isOpen = ref(false);
 
 <template>
   <div class="flex items-center gap-2 text-sm">
-    <div class="hidden font-medium text-muted-foreground md:inline-block">
-      Edit Oct 08
-    </div>
-    <Button variant="ghost" size="icon" class="h-7 w-7">
-      <Star />
-    </Button>
+<!--    <div class="hidden font-medium text-muted-foreground md:inline-block">-->
+<!--      Edit Oct 08-->
+<!--    </div>-->
+<!--    <Button variant="ghost" size="icon" class="h-7 w-7">-->
+<!--      <Star />-->
+<!--    </Button>-->
     <Popover v-model:open="isOpen">
       <PopoverTrigger as-child>
         <Button
