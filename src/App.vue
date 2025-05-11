@@ -2,11 +2,10 @@
 import AppSidebar from '@/components/AppSidebar.vue';
 import NavActions from '@/components/NavActions.vue';
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from '@/components/ui/breadcrumb';
+  ShoppingCart,
+  Minus,
+  Plus
+} from 'lucide-vue-next';
 import { Separator } from '@/components/ui/separator';
 import {
   SidebarInset,
@@ -19,6 +18,20 @@ const length = 50
 
 const truncateText = (item) => {
   return item.expanded ? item.name : (item.name.slice(0, length) + (item.name.length > length ? '...' : ''))
+}
+const addToCart = (item) => {
+  item.added = true
+  item.count = 1
+}
+const increase = (item) => {
+  item.added = true
+  item.count = (item.count || 0) + 1
+}
+const decrease = (item) => {
+  item.count = item.count - 1
+  if(!item.count){
+    item.added = false
+  }
 }
 const hasMore = (text) => {
   return text.length > length
@@ -163,14 +176,31 @@ const items = ref([
       </header>
       <div class="flex-1 grid grid-cols-12 gap-4 px-4 py-10">
         <div class="col-span-6 sm:col-span-4 md:col-span-6 lg:col-span-4 xl:col-span-3" v-for="item in items">
-          <Card class="h-full">
+          <Card class="h-full flex flex-col">
             <CardHeader class="!p-4 lg:!p-6">
               <p class="font-semibold">{{item.code}}</p>
               <img :src="item.image" alt="">
             </CardHeader>
-            <CardContent class="!p-4 lg:!p-6">
+            <CardContent class="!p-4 lg:!p-6 flex flex-col flex-1 justify-between">
               <CardTitle class="text-sm">{{truncateText(item)}} <button v-if="hasMore(item.name)" @click="expand(item)" :class="`underline ${item.expanded ? 'text-blue-400 font-normal' : 'font-semibold text-blue-500'}`">
                 {{ item.expanded ? 'пок.меньше' : 'пок.больше' }}</button></CardTitle>
+              <div class="flex justify-between mt-2">
+                <div></div>
+                <div>
+                  <button v-if="!item.added" @click="addToCart(item)" class="flex items-center rounded-full px-4 gap-2 bg-blue-500 p-1 text-xs text-white">Доб <ShoppingCart size="15"/></button>
+                  <div v-else class="flex gap-2 items-center">
+                    <button @click="decrease(item)" class="rounded-full text-white bg-red-500 flex justify-center items-center p-1">
+                      <Minus size="10" stroke-width="5"/>
+                    </button>
+                    <ShoppingCart class="text-blue-500" size="15"/>
+                    <span class="text-blue-500 font-semibold">{{item.count}}</span>
+                    <button @click="increase(item)" class="rounded-full text-white bg-blue-500 flex justify-center items-center p-1">
+                      <Plus size="10" stroke-width="5"/>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
             </CardContent>
           </Card>
         </div>
