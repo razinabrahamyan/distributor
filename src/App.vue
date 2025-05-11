@@ -52,21 +52,21 @@ const items = [
   },
   {
     code:'НС-1429043',
-    name:'Электродвигатель вентилятора наружного блока EACS/I-18HAT/N3_21Y (11002012035134) / Արտաքին բլոկի օդափոխիչի էլեկտրական շարժիչ EACS/I-18HAT/N3_21Y (11002012035134)',
+    name:'Электродвигатель вентилятора наружного блока EACS/I-18HAT/N3_21Y (11002012035134) / Արտաքին բլոկի օդափոխիչի էլեկտրական շարժիչ EACS/I-18HAT/N3_21Y (11002012035134)',
     warehouse:6,
     left:2.000,
     image:'https://rkcdn.ru/products/383bc516-6782-11ef-b8db-00505601218a/src.jpg'
   },
   {
     code:'НС-1187238',
-    name:'Электродвигатель вентилятора внутреннего блока KON-07/09/12HN1_19Y (11002012031474) / Ներքին միավորի օդափոխիչի էլեկտրական շարժիչ KON-07/09/12HN1_19Y (11002012031474)',
+    name:'Электродвигатель вентилятора внутреннего блока KON-07/09/12HN1_19Y (11002012031474) / Ներքին միավորի օդափոխիչի էլեկտրական շարժիչ KON-07/09/12HN1_19Y (11002012031474)',
     warehouse:6,
     left:1.000,
     image:'https://rkcdn.ru/products/fa178fab-eea2-11ef-b8de-00505601218a/src.jpg'
   },
   {
     code:'НС-1198126',
-    name:'Электродвигатель вентилятора внутреннего блока EACS/I-24HFE/N3_In (11002015008646) / Ներքին միավորի օդափոխիչի էլեկտրական շարժիչ EACS/I-24HFE/N3_In (11002015008646)',
+    name:'Электродвигатель вентилятора внутреннего блока EACS/I-24HFE/N3_In (11002015008646) / Ներքին միավորի օդափոխիչի էլեկտրական շարժիչ EACS/I-24HFE/N3_In (11002015008646)',
     warehouse:6,
     left:1.000,
     image:'https://rkcdn.ru/products/2b4da66f-6ad0-11ef-b8db-00505601218a/src.jpg'
@@ -148,7 +148,7 @@ const items = [
         </div>
       </header>
       <div class="flex-1 grid grid-cols-12 gap-4 px-4 py-10">
-        <div class="col-span-12 md:col-span-3" v-for="item in items">
+        <div class="col-span-4 lg:col-span-4 xl:col-span-3" v-for="item in items">
           <Card class="h-full">
             <CardHeader>
               <p>{{item.code}}</p>
