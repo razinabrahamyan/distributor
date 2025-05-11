@@ -28,7 +28,7 @@ const increase = (item, e) => {
   item.added = true
   item.count = (item.count || 0) + 1
 }
-const decrease = (item) => {
+const decrease = (item,e) => {
   e.preventDefault()
   item.count = item.count - 1
   if(!item.count){
