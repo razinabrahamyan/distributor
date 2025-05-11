@@ -23,11 +23,13 @@ const addToCart = (item) => {
   item.added = true
   item.count = 1
 }
-const increase = (item) => {
+const increase = (item, e) => {
+  e.preventDefault()
   item.added = true
   item.count = (item.count || 0) + 1
 }
 const decrease = (item) => {
+  e.preventDefault()
   item.count = item.count - 1
   if(!item.count){
     item.added = false
@@ -189,12 +191,12 @@ const items = ref([
                 <div>
                   <button v-if="!item.added" @click="addToCart(item)" class="flex items-center rounded-full px-4 gap-2 bg-blue-500 p-1 text-xs text-white">Доб <ShoppingCart size="15"/></button>
                   <div v-else class="flex gap-2 items-center">
-                    <button @click="decrease(item)" class="rounded-full text-white bg-red-500 flex justify-center items-center p-1">
+                    <button @click="(e) => decrease(item,e)" class="rounded-full text-white bg-red-500 flex justify-center items-center p-1">
                       <Minus size="10" stroke-width="5"/>
                     </button>
                     <ShoppingCart class="text-blue-500" size="15"/>
                     <span class="text-blue-500 font-semibold">{{item.count}}</span>
-                    <button @click="increase(item)" class="rounded-full text-white bg-blue-500 flex justify-center items-center p-1">
+                    <button @click="(e) => increase(item,e)" class="rounded-full text-white bg-blue-500 flex justify-center items-center p-1">
                       <Plus size="10" stroke-width="5"/>
                     </button>
                   </div>
