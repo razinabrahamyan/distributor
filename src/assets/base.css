@@ -60,8 +60,14 @@
   margin: 0;
   font-weight: normal;
 }
-
-
+.fade-collapse-enter-active,
+.fade-collapse-leave-active {
+  transition: all 0.8s ease;
+}
+.fade-collapse-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
