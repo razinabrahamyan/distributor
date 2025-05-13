@@ -17,6 +17,7 @@ import {
   Settings2,
   Sparkles,
   Trash2,
+  ShoppingCart
 } from 'lucide-vue-next';
 import TeamSwitcher from "@/components/TeamSwitcher.vue";
 import NavMain from "@/components/NavMain.vue";
@@ -53,8 +54,13 @@ const data = {
   navMain: [
     {
       title: 'Продукты',
-      url: '#',
+      url: '/',
       icon: Home,
+    },
+    {
+      title: 'Корзина',
+      url: '/cart',
+      icon: ShoppingCart,
     }
   ],
   navSecondary: [
